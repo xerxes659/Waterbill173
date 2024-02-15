@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Meter Reading is Done</title>
+    <script>
+        function sendWaterMeterReading() {
+            const name = document.getElementById('name').value;
+            const meterReading = document.getElementById('meter-reading').value;
+
+            const data = {
+                content: `${name} sent the water meter reading: ${meterReading}`
+            };
+
+            fetch('https://discord.com/api/webhooks/1207586529481072700/pht83-vbKPta2ky7n49SQq47BDNDl8voXVMw01m_CNkWPyXUZCi4-Y_V0w1Pxwqj_Q0j', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                alert('Water meter reading has been sent to Discord!\nYou will now be redirected to the login page.');
+                document.getElementById('water-meter-form').submit();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('There was an error sending the water meter reading to Discord. Please try again.');
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Water Meter Reading is Done</h1>
+    <form id="water-meter-form" action="login_page.html" method="get">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="meter-reading">Enter the water meter reading:</label>
+        <input type="number" id="meter-reading" name="meter-reading" required>
+        <button type="button" onclick="sendWaterMeterReading()">Send to Discord and go to Login Page</button>
+    </form>
+</body>
+</html>
